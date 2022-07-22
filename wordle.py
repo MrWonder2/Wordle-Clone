@@ -22,15 +22,18 @@ def checkGuess(turns, word, userGuess, window):
     renderList = ["","","","",""]
     spacing = 0
     guessColourCode = [grey,grey,grey,grey,grey]
+    remaining_letters_in_word = word
+    
+    for x in range(0,5):
+        if word[x] == userGuess[x]:
+            remaining_letters_in_word = remaining_letters_in_word.replace(userGuess[x],"")
+            guessColourCode[x] = green
+
 
     for x in range(0,5):
-        # if userGuess.count(userGuess[x]) == 1:
-        #     print(userGuess.count(userGuess[x]))
-        if userGuess[x] in word:
-            guessColourCode[x] = yellow
-
-        if word[x] == userGuess[x]:
-            guessColourCode[x] = green
+            if (userGuess[x] in remaining_letters_in_word) and (userGuess[x] != word[x]):
+                remaining_letters_in_word = remaining_letters_in_word.replace(userGuess[x],"")
+                guessColourCode[x] = yellow
 
     list(userGuess)
 
