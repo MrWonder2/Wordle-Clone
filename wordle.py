@@ -3,7 +3,6 @@ import pygame
 import sys
 from string import whitespace
 from pygame.locals import *
-from time import sleep
 pygame.init()
 
 yellow = (201, 180, 88)
