@@ -7,7 +7,7 @@ pygame.init()
 
 yellow = (201, 180, 88)
 white = (255, 255, 255)
-grey = (58, 58, 60)
+grey = (211, 214, 218)
 black = (18, 18, 19)
 brightgreen = (0, 255, 0)
 green = (83, 141, 78)
