@@ -7,7 +7,7 @@ pygame.init()
 
 yellow = (201, 180, 88)
 white = (255, 255, 255)
-grey = (211, 214, 218)
+grey = (58, 58, 60)
 black = (18, 18, 19)
 brightgreen = (0, 255, 0)
 green = (83, 141, 78)
@@ -128,6 +128,8 @@ def main():
             window.blit(youLose, (420, 600))
             window.blit(playAgain, (400, 650))
             window.blit(yn, (520, 700))
+            CorrectWord = bigFont.render(str("Answer was ") + str(word[0:5]), True, yellow)
+            window.blit(CorrectWord, (300, 760))
 
         pygame.display.update()
         clock.tick(FPS)
