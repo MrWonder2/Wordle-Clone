@@ -1,4 +1,6 @@
 import random
+import os
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import pygame
 import sys
 from string import whitespace
@@ -96,16 +98,16 @@ def main():
             if event.type == QUIT:
                 pygame.exit()
                 sys.exit()
-            if (event.type == pygame.KEYDOWN and event.key == pygame.K_BACKSPACE) or len(guess) > 5:
+            if (event.type == pygame.KEYDOWN and event.key == pygame.K_BACKSPACE) or (len(guess) > 5):
                 guess = guess[:-1]
                 guess = guess.upper().strip()
 
-            if event.type == pygame.KEYDOWN and event.key != pygame.K_BACKSPACE:
-                if event.unicode.upper().strip().isalpha():
+            if (event.type == pygame.KEYDOWN and event.key != pygame.K_BACKSPACE):
+                if event.unicode.upper().strip().isalpha() and turns<5:
                     guess += event.unicode.upper().strip()
-                if event.unicode.upper() == "Y" and (win == True or turns == 5):
+                if event.unicode.upper() == "Y" and (win == True or turns >= 5):
                     main()
-                elif event.unicode.upper() == "N" and (win == True or turns == 5):
+                elif event.unicode.upper() == "N" and (win == True or turns >= 5):
                     pygame.quit()
                     sys.exit()
                 if guess.lower() in wordlist:
