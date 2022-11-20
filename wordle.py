@@ -46,11 +46,11 @@ def checkGuess(turns, word, userGuess, window):
     for x in range(0, 5):
         renderList[x] = font.render(userGuess[x], True, white)
         pygame.draw.rect(window, guessColourCode[x], pygame.Rect(
-            400 + spacing, 100 + (turns*70), 50, 50))
+            400 + spacing, 70 + (turns*70), 50, 50))
         if userGuess[x] == "I":
-            window.blit(renderList[x], (420 + spacing, 112.5 + (turns*70)))
+            window.blit(renderList[x], (420 + spacing, 85 + (turns*70)))
         else:
-            window.blit(renderList[x], (415 + spacing, 112.5 + (turns*70)))
+            window.blit(renderList[x], (415 + spacing, 85 + (turns*70)))
         spacing += 70
 
     if guessColourCode == [green, green, green, green, green]:
@@ -66,7 +66,7 @@ def main():
     wordlist = wordlist.readlines()
     wordlist = [x.strip() for x in wordlist]
 
-    height = 900
+    height = 700
     width = 1150
 
     FPS = 30
@@ -82,7 +82,7 @@ def main():
     for x in range(0, 5):
         for y in range(0, 5):
             pygame.draw.rect(window, grey, pygame.Rect(
-                400+(x*70), 100+(y*70), 50, 50), 2)
+                400+(x*70), 70+(y*70), 50, 50), 2)
 
     pygame.display.set_caption("Wordle!")
     icon = pygame.image.load('wordle.jpg')
@@ -117,19 +117,20 @@ def main():
 
         window.fill(black, (250, 550, 500, 200))
         renderGuess = font.render(guess, True, white)
-        window.blit(renderGuess, (500, 700))
+        window.blit(renderGuess, (520, 600))
 
         if win == True:
-            window.blit(youWin, (440, 600))
-            window.blit(playAgain, (400, 650))
-            window.blit(yn, (520, 700))
+            window.blit(youWin, (440, 450))
+            window.blit(playAgain, (400, 500))
+            window.blit(yn, (520, 550))
 
         if turns == 5 and win != True:
-            window.blit(youLose, (420, 600))
-            window.blit(playAgain, (400, 650))
-            window.blit(yn, (520, 700))
-            CorrectWord = bigFont.render(str("Answer was ") + str(word[0:5]), True, yellow)
-            window.blit(CorrectWord, (300, 760))
+            window.blit(youLose, (420, 450))
+            window.blit(playAgain, (400, 500))
+            window.blit(yn, (520, 550))
+            CorrectWord = bigFont.render(
+                str("Answer was ") + str(word[0:5]), True, yellow)
+            window.blit(CorrectWord, (300, 610))
 
         pygame.display.update()
         clock.tick(FPS)
